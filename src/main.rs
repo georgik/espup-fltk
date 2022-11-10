@@ -1,5 +1,7 @@
+use std::collections::HashSet;
 use std::path::{Path, PathBuf};
 use espup::{InstallOpts, install};
+use espup::targets::Target;
 use fltk::{app, button::Button, frame::Frame, prelude::*, window::Window};
 mod ui;
 
@@ -15,6 +17,12 @@ fn main() {
     ui.nightly_version_text_input.set_value("nightly-2021-03-01");
     ui.toolchain_version_text_input.set_value("1.65.0.1");
 
+    let mut target_hashset = HashSet::new();
+    target_hashset.insert(Target::ESP32);
+    target_hashset.insert(Target::ESP32S2);
+    target_hashset.insert(Target::ESP32S3);
+    target_hashset.insert(Target::ESP32C2);
+    target_hashset.insert(Target::ESP32C3);
     ui.install_button.set_callback(move |_| {
         let opts = InstallOpts {
             default_host: Some(ui.default_host_text_input.value()),
@@ -25,7 +33,7 @@ fn main() {
             log_level: "".to_string(),
             nightly_version: ui.nightly_version_text_input.value(),
             profile_minimal: false,
-            targets: Default::default(),
+            targets: target_hashset.clone(),
             toolchain_version: Some(ui.toolchain_version_text_input.value()),
         };
         install(opts);

@@ -39,7 +39,7 @@ class UserInterface {open
       }
       Fl_Input toolchain_version_text_input {
         label {Toolchain version:}
-        xywh {120 200 100 24}
+        xywh {120 175 100 24}
       }
     }
   }
