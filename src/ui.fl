@@ -7,15 +7,39 @@ class UserInterface {open
   Function {make_window()} {open
   } {
     Fl_Window {} {open
-      xywh {760 446 501 320} type Double visible
+      xywh {766 473 501 320} type Double visible
     } {
-      Fl_Input {} {
+      Fl_Input default_host_text_input {
         label {Default host:}
         xywh {100 26 145 24}
       }
       Fl_Button install_button {
-        label Install selected
+        label Install
         xywh {245 25 64 20}
+      }
+      Fl_Input esp_idf_version_text_input {
+        label {ESP-IDF version:}
+        xywh {120 50 100 24}
+      }
+      Fl_Input export_file_text_input {
+        label {Export file:}
+        xywh {120 75 100 24}
+      }
+      Fl_Input extra_crates_text_input {
+        label {Extra crates:}
+        xywh {120 100 100 24}
+      }
+      Fl_Input llvm_version_text_input {
+        label {LLVM version:}
+        xywh {120 125 100 24}
+      }
+      Fl_Input nightly_version_text_input {
+        label {Nightly version:}
+        xywh {120 150 100 24}
+      }
+      Fl_Input toolchain_version_text_input {
+        label {Toolchain version:}
+        xywh {120 200 100 24}
       }
     }
   }
